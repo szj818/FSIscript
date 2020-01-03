@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#PBS -q post1                  
+#PBS -N fsi_test            
+#PBS -l nodes=1:ppn=2    
+#PBS -l walltime=9600:00:00 
+#PBS -V
+#PBS -o job.log 
+#PBS -e job.err 
+###PBS -j oe
+###PBS -m ae -M szj818@qq.com 
+
+echo "--- This job is:$PBS_JOBNAME(${PBS_JOBID%.*})@$PBS_QUEUE"  
+echo "--- Current working directory is:${PBS_O_WORKDIR}"
+#echo "--- Running on ${nprocs} processes (cores) on the following nodes:" && cat $PBS_NODEFILE | uniq
+echo "--- Starting job at:`date`"
+
+export NPA=1
+NP=$(cat ${PBS_NODEFILE} | wc -l) 
+export NP=$((NP*2))
+export NPF=$((NP)) 
+export NODES=$(head $PBS_NODEFILE -n 1)
+export FLUID='Solution'
+export STRUCT='Solution 1'
+
+"$AWP_ROOT195/SystemCoupling/bin/systemcoupling" -R  $PBS_O_WORKDIR/fsi.py 
+
+echo "--- Job finished at:`date`"
+qstat | grep $PBS_JOBNAME | awk '{print "--- Total CPU hours:"$4}'
+# date >> $HOME/sun/fluent_flag

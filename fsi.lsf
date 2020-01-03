@@ -1,0 +1,18 @@
+#/bin/bash
+#BSUB -J FSIjob
+#BSUB -q normal
+#BSUB -n 40
+#BSUB -o out.%J.txt
+#BSUB -e error.%J.txt
+#BSUB -R span[ptile=80]
+##BSUB -x
+
+export NPA=10
+export NP=$LSB_DJOB_NUMPROC
+export NPF=$((NP)) 
+export NODES=${LSB_HOSTS##* }
+export FLUID='Solution'
+export STRUCT='Solution 1'
+
+"$AWP_ROOT195/SystemCoupling/bin/systemcoupling" -R fsi.py
+

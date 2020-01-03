@@ -1,0 +1,11 @@
+file/confirm-overwrite? no
+file/start-transcript "Solution1.trn"
+file set-batch-options yes yes yes ,
+file/read-case/"fluidFlow.cas.gz"
+(if (hyb-init?)
+(ti-menu-load-string "/solve/initialize/hyb-initialization")
+(ti-menu-load-string "/solve/initialize/initialize-flow"))
+(sc-solve)
+file/stop-transcript
+exit
+ok
