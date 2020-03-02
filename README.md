@@ -1,7 +1,7 @@
 ## 说明
 `fsi.bat`与`fsi.sh`分别为windows与linux下的执行脚本，`fsi.lsf`,`fsi.pbs`,`fsi.slurm`分别是几个作业调度系统LSF、PBS、Slurm的提交脚本。上述几个脚本在执行前需要根据自己的情况修改NPF(Fluent使用核数)、NPA(Mechanical使用核数)，并行方式使用的是`SharedAllocateMachines`,也即共用节点和核心，跨节点运行未考虑。变量FLUID与STRUCT同样要根据实际情况修改为是Solution 1还是Solution。文件夹tutorial提供了算例供试验。
 
-下文为参照官方帮助文档ANSYS SystemCoupling2.0进行的总结，已发布至[SunBlog](https://www.flameszj.top/System-Coupling-2-0/ ),建议直接阅读官方ANSYS帮助文档。
+下文为参照官方帮助文档ANSYS SystemCoupling2.0进行的总结，已发布至[SunBlog](https://www.flameszj.top/posts/9d7165c5/ ),建议直接阅读官方ANSYS帮助文档。
 
 ## Working with the System Coupling Data Model
 `System Coupling Data Model Settings`包含以下四个部分：`CouplingControl` `OutputControl` `CouplingInterface` `CouplingParticipant`
