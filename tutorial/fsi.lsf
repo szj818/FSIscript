@@ -11,7 +11,7 @@ export NPA=10
 export NP=$LSB_DJOB_NUMPROC
 export NPF=$((NP)) 
 export NODES=${LSB_HOSTS##* }
-export FLUID='Solution'
-export STRUCT='Solution 1'
+export FLUID='Solution 1'
+export STRUCT='Solution'
 
 "$AWP_ROOT195/SystemCoupling/bin/systemcoupling" -R fsi.py
