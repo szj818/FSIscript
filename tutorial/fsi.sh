@@ -4,7 +4,7 @@ echo "--- Starting job at:`date`"
 
 export NPA=1
 export NP=2
-export NPF=$(NP)
+export NPF=$((NP))
 export NODES=$(hostname)
 export FLUID='Solution 1'
 export STRUCT='Solution'
